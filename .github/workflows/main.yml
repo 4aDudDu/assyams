@@ -1,0 +1,20 @@
+name: Deploy Ke cPanel Otomatis
+on:
+  push:
+    branches:
+      - main # atau master, sesuaikan nama branch kamu
+jobs:
+  web-deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+    - name: Ambil Kode Terbaru
+      uses: actions/checkout@v3
+    
+    - name: Kirim ke cPanel via FTP
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+      with:
+        server: ${{ secrets.FTP_SERVER }}
+        username: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
+        server-dir: ./ # Akan masuk ke folder yang diset di akun FTP tadi
