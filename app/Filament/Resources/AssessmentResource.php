@@ -63,21 +63,52 @@ class AssessmentResource extends Resource
                     Forms\Components\Select::make('assessment_type')
                         ->label('Jenis Penilaian')
                         ->options([
-                            'ziyadah' => 'Ziyadah',
-                            'murojaah' => 'Murojaah',
                             'tahsin' => 'Tahsin',
-                            'tilawah' => 'Tilawah',
+                            'tahfidz' => 'Tahfidz',
+                            'tajwid' => 'Tajwid',
                         ])
+                        ->required(),
+                    
+                    Forms\Components\Select::make('month')
+                        ->label('Bulan')
+                        ->options([
+                            1 => 'Januari', 2 => 'Februari', 3 => 'Maret', 4 => 'April',
+                            5 => 'Mei', 6 => 'Juni', 7 => 'Juli', 8 => 'Agustus',
+                            9 => 'September', 10 => 'Oktober', 11 => 'November', 12 => 'Desember',
+                        ])
+                        ->default(now()->month)
+                        ->required(),
+
+                    Forms\Components\TextInput::make('year')
+                        ->label('Tahun')
+                        ->type('number')
+                        ->default(now()->year)
                         ->required(),
                 ])->columns(3),
 
-                // FORM API AL-QURAN TETAP ADA SEPERTI SEBELUMNYA
+                // FORM PENILAIAN YANG LEBIH LENGKAP
                 Forms\Components\Section::make('Detail Penilaian')
-                    ->description('Pilih surah dan tentukan rentang ayat')
+                    ->description('Catat nama santri, nilai penyetoran, dan detail hafalan/bacaan')
                     ->schema([
                         Forms\Components\Repeater::make('data')
                             ->label('Detail Hafalan/Bacaan')
                             ->schema([
+                                Forms\Components\TextInput::make('nama')
+                                    ->label('Nama Santri')
+                                    ->placeholder('Abdullah bin Usman')
+                                    ->required()
+                                    ->columnSpan(2),
+
+                                Forms\Components\TextInput::make('nilai_penyetoran')
+                                    ->label('Nilai Penyetoran')
+                                    ->type('number')
+                                    ->placeholder('85')
+                                    ->minValue(0)
+                                    ->maxValue(100)
+                                    ->step(0.01)
+                                    ->required()
+                                    ->columnSpan(1),
+
                                 Forms\Components\Select::make('surah')
                                     ->label('Surah')
                                     ->options(function () {

@@ -10,10 +10,10 @@ class SubjectSeeder extends Seeder
     public function run(): void
     {
         $subjects = [
-            ['name' => 'Tilawah', 'slug' => 'tilawah'],
-            ['name' => 'Murottal', 'slug' => 'murottal'],
+            ['name' => 'Baca & Tulis', 'slug' => 'baca-tulis'],
             ['name' => 'Tahsin', 'slug' => 'tahsin'],
             ['name' => 'Tahfidz', 'slug' => 'tahfidz'],
+            ['name' => 'Tajwid', 'slug' => 'tajwid'],
         ];
 
         foreach ($subjects as $subject) {

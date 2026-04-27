@@ -17,50 +17,46 @@
     }
 </style>
 
-    <!-- HERO SECTION (SPMB) -->
-    <div class="relative bg-blue-900 text-white overflow-hidden">
+    <!-- HERO SECTION (SPMB) - FULL IMAGE BACKGROUND -->
+    <div class="relative text-white overflow-hidden min-h-screen flex items-center">
         
-        <!-- Background Image dari Filament -->
-        <!-- Jika ada gambar dari DB, pakai itu. Jika tidak, pakai pattern biru -->
+        <!-- Background Image dari Filament - FULL COVERAGE -->
         <div class="absolute inset-0 z-0">
             @if($bgUrl)
-                <img src="{{ $bgUrl }}" class="w-full h-full object-cover opacity-50" alt="Hero Background">
+                <img src="{{ $bgUrl }}" class="w-full h-full object-cover" alt="Hero Background">
             @else
-                <!-- Fallback Pattern jika admin belum upload gambar -->
-                <div class="w-full h-full bg-gradient-to-br from-blue-900 to-blue-800 opacity-90"></div>
+                <!-- Fallback Gradient jika admin belum upload gambar -->
+                <div class="w-full h-full bg-gradient-to-br from-emerald-700 via-green-700 to-emerald-900"></div>
             @endif
-            <!-- Overlay Gradient agar teks terbaca -->
-            <div class="absolute inset-0 bg-gradient-to-r from-blue-900/90 to-transparent"></div>
+            <!-- Overlay Gradient untuk kontras teks (lebih gelap) -->
+            <div class="absolute inset-0 bg-gradient-to-r from-emerald-900/85 via-emerald-800/70 to-transparent"></div>
+            <!-- Layer tambahan untuk mobile responsiveness -->
+            <div class="absolute inset-0 bg-black/20"></div>
         </div>
 
-        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-24 md:pt-28 md:pb-32">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32 lg:py-48 min-h-screen flex items-center">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center w-full">
                 
                 <!-- Text Section (Kiri) -->
-                <div class="text-center md:text-left space-y-2 fade-in-section">
-                    <p class="text-xl md:text-2xl font-light italic font-serif text-blue-200">Selamat Datang di</p>
-                    <h1 class="text-7xl md:text-9xl font-extrabold tracking-tighter text-white leading-none drop-shadow-lg">
+                <div class="text-center md:text-left space-y-2 fade-in-section order-2 md:order-1">
+                    <p class="text-xl md:text-2xl font-light italic font-serif text-emerald-100">Selamat Datang di</p>
+                    <h1 class="text-6xl md:text-8xl lg:text-9xl font-extrabold tracking-tighter text-white leading-none drop-shadow-xl">
                         SPMB
                     </h1>
-                    <h2 class="text-lg md:text-2xl font-bold uppercase tracking-widest text-blue-100">
+                    <h2 class="text-lg md:text-2xl font-bold uppercase tracking-widest text-emerald-50">
                         Sistem Penerimaan Murid Baru
                     </h2>
-                    <p class="text-md md:text-lg text-blue-200 pb-6">
+                    <p class="text-md md:text-lg text-emerald-100 pb-6">
                         SIT AS-SYAMS PEKANBARU TA. 2026/2027
                     </p>
                     
-                    <a href="{{ route('register') }}" class="inline-block px-8 py-4 bg-orange-500 hover:bg-orange-600 text-white font-bold rounded-full shadow-lg transform transition hover:scale-105 text-lg tracking-wide">
+                    <a href="{{ route('register') }}" class="inline-block px-8 py-4 bg-orange-700 hover:bg-orange-800 text-white font-bold rounded-full shadow-2xl transform transition hover:scale-110 text-lg tracking-wide">
                         DAFTAR SEKARANG
                     </a>
                 </div>
 
                 <!-- Image Section (Kanan - Ilustrasi Santri) -->
-                <!-- Kita pakai gambar placeholder santri, idealnya ini file png transparan -->
-                <div class="hidden md:block relative fade-in-section">
-                    <!-- <img src="https://png.pngtree.com/png-vector/20230906/ourmid/pngtree-moslem-student-indonesia-uniform-png-image_9999263.png" 
-                         alt="Santri Bahagia" 
-                         class="w-full max-w-lg mx-auto drop-shadow-2xl hover:scale-105 transition duration-500"> -->
-                    
+                <div class="hidden md:block relative fade-in-section order-1 md:order-2">
                     <!-- Dekorasi Koin/Elemen melayang -->
                     <div class="absolute top-0 right-0 animate-bounce delay-700">
                         <div class="w-16 h-16 bg-yellow-400 rounded-full blur-xl opacity-50"></div>
@@ -72,12 +68,12 @@
     </div>
 
     <!-- COUNTDOWN SECTION -->
-    <div class="bg-white border-b border-gray-200 shadow-sm relative z-20 -mt-8 mx-4 md:mx-auto max-w-6xl rounded-xl p-6 md:p-10 flex flex-col md:flex-row items-center justify-between gap-8 fade-in-section">
+    <div class="bg-white border-b-4 border-emerald-700 shadow-lg relative z-20 -mt-8 mx-4 md:mx-auto max-w-6xl rounded-xl p-6 md:p-10 flex flex-col md:flex-row items-center justify-between gap-8 fade-in-section">
         
         <!-- Text Description -->
         <div class="md:w-1/2">
             <p class="text-gray-600 leading-relaxed text-sm md:text-base">
-                Bergabunglah bersama kami di Sekolah Islam Terpadu (SIT) <span class="font-bold text-green-700">Pondok As-Syams</span>. 
+                Bergabunglah bersama kami di Sekolah Islam Terpadu (SIT) <span class="font-bold text-emerald-700">Pondok As-Syams</span>. 
                 Sistem Penerimaan Peserta Didik Baru (SPMB) kini telah dibuka. Dapatkan pendidikan berkualitas berbasis Al-Qur'an, Akhlak, dan Prestasi.
             </p>
         </div>
@@ -129,21 +125,21 @@
     <section class="bg-white py-12 fade-in-section">
         <!-- ... (Isi konten Program Unggulan/Stats yang lama biarkan di sini atau copy ulang dari file sebelumnya) ... -->
          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-10">
-            <h2 class="text-3xl font-extrabold text-green-800">Kenapa Memilih As-Syams?</h2>
+            <h2 class="text-3xl font-extrabold text-emerald-800">Kenapa Memilih As-Syams?</h2>
             <div class="mt-10 grid gap-8 grid-cols-1 md:grid-cols-3">
                  <!-- Card 1 -->
-                <div class="bg-green-50 rounded-lg p-6 hover:shadow-lg transition">
-                    <h3 class="text-xl font-bold text-green-700">Tahfiz Al-Qur'an</h3>
+                <div class="bg-emerald-50 rounded-lg p-6 hover:shadow-lg transition border-l-4 border-emerald-700">
+                    <h3 class="text-xl font-bold text-emerald-700">Tahfiz Al-Qur'an</h3>
                     <p class="mt-2 text-gray-600">Program unggulan hafalan mutqin bersanad.</p>
                 </div>
                 <!-- Card 2 -->
-                <div class="bg-green-50 rounded-lg p-6 hover:shadow-lg transition">
-                    <h3 class="text-xl font-bold text-green-700">Adab & Akhlak</h3>
+                <div class="bg-emerald-50 rounded-lg p-6 hover:shadow-lg transition border-l-4 border-emerald-700">
+                    <h3 class="text-xl font-bold text-emerald-700">Adab & Akhlak</h3>
                     <p class="mt-2 text-gray-600">Pembentukan karakter islami sejak dini.</p>
                 </div>
                 <!-- Card 3 -->
-                <div class="bg-green-50 rounded-lg p-6 hover:shadow-lg transition">
-                    <h3 class="text-xl font-bold text-green-700">Prestasi Akademik</h3>
+                <div class="bg-emerald-50 rounded-lg p-6 hover:shadow-lg transition border-l-4 border-emerald-700">
+                    <h3 class="text-xl font-bold text-emerald-700">Prestasi Akademik</h3>
                     <p class="mt-2 text-gray-600">Kurikulum terpadu nasional & kepondokan.</p>
                 </div>
             </div>
@@ -157,7 +153,7 @@
                 
                 <!-- BAGIAN TEKS (KIRI) -->
                 <div class="space-y-6">
-                    <h2 class="text-3xl md:text-4xl font-bold text-green-700 leading-tight">
+                    <h2 class="text-3xl md:text-4xl font-bold text-emerald-700 leading-tight">
                     Rumah Qur'an Asy-Syams
                     </h2>
                     
@@ -250,7 +246,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
                 <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
-                    Berita & <span class="text-green-600">Artikel</span> Yayasan
+                    Berita & <span class="text-emerald-600">Artikel</span> Yayasan
                 </h2>
                 <p class="mt-4 text-gray-500">Informasi terbaru seputar kegiatan dan prestasi Pondok As-Syams.</p>
             </div>
@@ -264,7 +260,7 @@
                             <img src="{{ asset('storage/' . $post->image) }}" alt="{{ $post->title }}" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500">
                             <!-- Category Badge -->
                             <div class="absolute top-4 left-4">
-                                <span class="bg-green-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">
+                                <span class="bg-emerald-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">
                                     {{ $post->category }}
                                 </span>
                             </div>
@@ -272,7 +268,7 @@
 
                         <!-- Content -->
                         <div class="p-6">
-                            <h3 class="text-xl font-bold text-gray-900 leading-tight mb-2 group-hover:text-green-600 transition">
+                            <h3 class="text-xl font-bold text-gray-900 leading-tight mb-2 group-hover:text-emerald-600 transition">
                                 <a href="{{ route('post.show', $post->slug) }}">
                                     {{ Str::limit($post->title, 60) }}
                                 </a>
@@ -304,7 +300,7 @@
 
             @if($posts->count() > 0)
                 <div class="mt-10 text-center">
-                    <a href="#" class="inline-block bg-green-600 text-white font-bold py-3 px-8 rounded hover:bg-green-700 transition">
+                    <a href="#" class="inline-block bg-emerald-600 text-white font-bold py-3 px-8 rounded hover:bg-emerald-700 transition">
                         Load More News
                     </a>
                 </div>
@@ -318,7 +314,7 @@
             
             <div class="text-center mb-12">
                 <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
-                    Hubungi <span class="text-green-600">Kami</span>
+                    Hubungi <span class="text-emerald-600">Kami</span>
                 </h2>
                 <p class="mt-4 text-gray-500 text-lg">
                     Punya pertanyaan seputar pendaftaran atau program pondok? <br> 
@@ -379,12 +375,12 @@
 
                     
     <!-- KOLOM KANAN: FORM PESAN -->
-    <div class="bg-white rounded-2xl shadow-lg p-8 border-t-4 border-yellow-500 relative">
+    <div class="bg-white rounded-2xl shadow-lg p-8 border-t-4 border-orange-700 relative">
                         <h3 class="text-2xl font-bold text-gray-800 mb-6">Kirim Pesan</h3>
                         
                         <!-- Pesan Sukses -->
                         @if(session('success'))
-                            <div class="mb-6 p-4 bg-green-100 border border-green-400 text-green-700 rounded">
+                            <div class="mb-6 p-4 bg-emerald-100 border border-emerald-400 text-emerald-700 rounded">
                                 {{ session('success') }}
                             </div>
                         @endif
@@ -398,7 +394,7 @@
                                 <!-- Nama -->
                                 <div>
                                     <label class="block text-sm font-medium text-gray-700 mb-1">Nama Lengkap</label>
-                                    <input type="text" name="name" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-green-500 focus:border-green-500 transition outline-none" placeholder="Contoh: Abdullah">
+                                    <input type="text" name="name" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition outline-none" placeholder="Contoh: Abdullah">
                                     @error('name') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
                                 </div>
 
@@ -406,12 +402,12 @@
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
                                     <div>
                                         <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
-                                        <input type="email" name="email" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-green-500 focus:border-green-500 transition outline-none" placeholder="email@contoh.com">
+                                        <input type="email" name="email" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition outline-none" placeholder="email@contoh.com">
                                         @error('email') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
                                     </div>
                                     <div>
                                         <label class="block text-sm font-medium text-gray-700 mb-1">No. WhatsApp</label>
-                                        <input type="number" name="phone" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-green-500 focus:border-green-500 transition outline-none" placeholder="0812xxx">
+                                        <input type="number" name="phone" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition outline-none" placeholder="0812xxx">
                                         @error('phone') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
                                     </div>
                                 </div>
@@ -419,12 +415,12 @@
                                 <!-- Pesan -->
                                 <div>
                                     <label class="block text-sm font-medium text-gray-700 mb-1">Isi Pesan</label>
-                                    <textarea name="message" rows="4" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-green-500 focus:border-green-500 transition outline-none" placeholder="Tulis pertanyaan Anda di sini..."></textarea>
+                                    <textarea name="message" rows="4" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition outline-none" placeholder="Tulis pertanyaan Anda di sini..."></textarea>
                                     @error('message') <span class="text-red-500 text-xs">{{ $message }}</span> @enderror
                                 </div>
 
                                 <!-- Tombol Kirim -->
-                                <button type="submit" class="w-full bg-green-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-green-700 transition transform hover:-translate-y-1 shadow-lg flex justify-center items-center gap-2">
+                                <button type="submit" class="w-full bg-orange-700 text-white font-bold py-3 px-6 rounded-lg hover:bg-orange-800 transition transform hover:-translate-y-1 shadow-lg flex justify-center items-center gap-2">
                                     <span>Kirim Pesan Sekarang</span>
                                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                                 </button>
