@@ -34,7 +34,7 @@
                 <!-- <div class="w-10 h-10 bg-green-700 rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg">AS</div> -->
                 <img src="{{ asset('images/logo.PNG') }}" alt="Logo Pondok As-Syams" class="w-12 h-12 object-contain shadow-lg rounded-full">
                 <div class="flex flex-col">
-                    <span class="font-bold text-2xl tracking-tight text-green-800 font-serif">RQ AS-SYAMS</span>
+                    <span class="font-bold text-2xl tracking-tight text-green-800 font-serif">YPTQ AS-SYAMS</span>
                     <span class="text-xs text-green-600 tracking-widest uppercase hidden md:block">Mencetak Generasi Qur'ani</span>
                 </div>
             </div>
@@ -47,7 +47,7 @@
                 <!-- PROGRAM (Dropdown) -->
                 <div class="relative" x-data="{ openProgram: false }" @mouseenter="openProgram = true" @mouseleave="openProgram = false">
                     <button class="flex items-center text-sm font-semibold text-gray-700 hover:text-green-600 uppercase transition group">
-                        Kelas
+                        Programs
                         <svg class="ml-1 w-4 h-4 text-gray-400 group-hover:text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </button>
                     <div x-show="openProgram" x-transition.opacity.duration.200ms class="absolute left-0 mt-0 w-48 bg-white rounded-md shadow-lg py-1 border border-gray-100 z-50">
@@ -59,11 +59,11 @@
 
                 <!-- PENDAFTARAN -->
                 <a href="{{ route('register') }}" class="text-sm font-semibold text-gray-700 hover:text-green-600 transition uppercase">
-                    Pendaftaran
+                    Registration
                 </a>
 
-                <a href="{{ request()->routeIs('home') ? '#berita' : url('/#berita') }}" class="text-sm font-semibold text-gray-700 hover:text-green-600 transition uppercase">Berita</a>
-                <a href="{{ request()->routeIs('home') ? '#contact' : url('/#contact') }}" class="text-sm font-semibold text-gray-700 hover:text-green-600 transition uppercase">Kontak</a>
+                <a href="{{ request()->routeIs('home') ? '#berita' : url('/#berita') }}" class="text-sm font-semibold text-gray-700 hover:text-green-600 transition uppercase">News</a>
+                <a href="{{ request()->routeIs('home') ? '#contact' : url('/#contact') }}" class="text-sm font-semibold text-gray-700 hover:text-green-600 transition uppercase">Contact</a>
 
                 <!-- BUTTON LOGIN DESKTOP (TRIGGER MODAL) -->
                 @auth
@@ -73,7 +73,7 @@
                 @else
                     <button @click="loginOpen = true" class="flex items-center gap-2 px-5 py-2.5 bg-green-600 hover:bg-green-700 text-white text-sm font-semibold rounded-full transition shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"></path></svg>
-                        <span>Masuk Portal</span>
+                        <span>Login Portal</span>
                     </button>
                 @endauth
 
@@ -98,7 +98,7 @@
             
             <div x-data="{ openSub: false }">
                 <button @click="openSub = !openSub" class="w-full flex justify-between items-center pl-3 pr-4 py-2 border-l-4 border-transparent text-gray-600 hover:bg-gray-50 text-base font-medium">
-                    <span>Kelas</span>
+                    <span>Programs</span>
                     <svg :class="{'rotate-180': openSub}" class="w-4 h-4 transform transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                 </button>
                 <div x-show="openSub" class="bg-gray-50">
@@ -108,9 +108,9 @@
                 </div>
             </div>
 
-            <a href="{{ route('register') }}" class="block pl-3 pr-4 py-2 border-l-4 border-transparent text-gray-600 hover:bg-gray-50 text-base font-medium">Pendaftaran</a>
-            <a href="{{ request()->routeIs('home') ? '#berita' : url('/#berita') }}" class="block pl-3 pr-4 py-2 border-l-4 border-transparent text-gray-600 hover:bg-gray-50 text-base font-medium">Berita</a>
-            <a href="{{ request()->routeIs('home') ? '#contact' : url('/#contact') }}" class="block pl-3 pr-4 py-2 border-l-4 border-transparent text-gray-600 hover:bg-gray-50 text-base font-medium">Kontak</a>
+            <a href="{{ route('register') }}" class="block pl-3 pr-4 py-2 border-l-4 border-transparent text-gray-600 hover:bg-gray-50 text-base font-medium">Registration</a>
+            <a href="{{ request()->routeIs('home') ? '#berita' : url('/#berita') }}" class="block pl-3 pr-4 py-2 border-l-4 border-transparent text-gray-600 hover:bg-gray-50 text-base font-medium">News</a>
+            <a href="{{ request()->routeIs('home') ? '#contact' : url('/#contact') }}" class="block pl-3 pr-4 py-2 border-l-4 border-transparent text-gray-600 hover:bg-gray-50 text-base font-medium">Contact</a>
 
             <!-- BUTTON LOGIN MOBILE (TRIGGER MODAL) -->
             <div class="pt-4 px-4 pb-2">
@@ -119,7 +119,7 @@
                 @else
                     <button @click="loginOpen = true; open = false" class="w-full flex justify-center items-center gap-2 px-4 py-2 bg-green-600 text-white font-bold rounded-lg shadow-sm">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"></path></svg>
-                        <span>Masuk Portal</span>
+                        <span>Login Portal</span>
                     </button>
                 @endauth
             </div>
@@ -168,8 +168,8 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
                             </svg>
                         </div>
-                        <h3 class="text-xl font-bold leading-6 text-gray-900" id="modal-title">Pilih Akses Masuk</h3>
-                        <p class="text-sm text-gray-500 mt-2">Silakan pilih portal sesuai peran Anda di Pondok.</p>
+                        <h3 class="text-xl font-bold leading-6 text-gray-900" id="modal-title">Select Login Access</h3>
+                        <p class="text-sm text-gray-500 mt-2">Please choose the portal according to your role.</p>
                     </div>
                 </div>
 
@@ -179,21 +179,21 @@
                         <div class="p-3 bg-gray-100 rounded-full group-hover:bg-green-100 transition mb-3">
                             <svg class="w-6 h-6 text-gray-600 group-hover:text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
                         </div>
-                        <span class="font-bold text-gray-800 group-hover:text-green-700">Login Ustad</span>
-                        <span class="text-xs text-gray-400 mt-1">Masuk ke Admin Panel</span>
+                        <span class="font-bold text-gray-800 group-hover:text-green-700">Teacher Login</span>
+                        <span class="text-xs text-gray-400 mt-1">Access Admin Panel</span>
                     </a>
                     <!-- Login Siswa -->
                     <a href="{{ route('login') }}" class="w-full group relative flex flex-col items-center justify-center p-4 bg-white border-2 border-gray-200 rounded-xl hover:border-blue-500 hover:shadow-md transition cursor-pointer text-decoration-none">
                         <div class="p-3 bg-gray-100 rounded-full group-hover:bg-blue-100 transition mb-3">
                             <svg class="w-6 h-6 text-gray-600 group-hover:text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
                         </div>
-                        <span class="font-bold text-gray-800 group-hover:text-blue-700">Login Siswa</span>
-                        <span class="text-xs text-gray-400 mt-1">Cek Nilai & Pembayaran</span>
+                        <span class="font-bold text-gray-800 group-hover:text-blue-700">Student Login</span>
+                        <span class="text-xs text-gray-400 mt-1">Check Grades & Payments</span>
                     </a>
                 </div>
 
                 <div class="bg-gray-50 px-4 py-3 sm:px-6 flex justify-center pb-6">
-                    <button type="button" class="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto" @click="loginOpen = false">Batal</button>
+                    <button type="button" class="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto" @click="loginOpen = false">Cancel</button>
                 </div>
             </div>
         </div>

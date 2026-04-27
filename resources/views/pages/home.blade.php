@@ -121,6 +121,36 @@
         </div>
     </div>
 
+    <!-- KARTU JENJANG SECTION -->
+    <section class="py-12 bg-gray-50 fade-in-section" id="jenjang">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-extrabold text-emerald-800">Daftar Pilihan Jenjang Pendidikan</h2>
+                <div class="mt-4 w-24 h-1 bg-yellow-400 mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                <!-- TKIT -->
+                <div class="flex flex-col gap-3">
+                    <div class="h-[28rem] rounded-xl flex items-center justify-center shadow-lg relative overflow-hidden group bg-purple-600">
+                        <img src="{{ asset('tkit.png') }}" onerror="this.onerror=null; this.src='https://placehold.co/400x600/6b21a8/ffffff?text=TKIT'" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-500" alt="TKIT">
+                    </div>
+                    <a href="{{ url('/register?jenjang=TKIT') }}" class="w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded shadow text-center text-sm md:text-base transition">DAFTAR TKIT &rarr;</a>
+                    <a href="#" class="w-full py-3 bg-gray-200 hover:bg-gray-300 text-gray-700 font-bold rounded shadow text-center text-sm transition">INFO PPDB TKIT</a>
+                </div>
+
+                <!-- RUMAH QURAN -->
+                <div class="flex flex-col gap-3">
+                    <div class="h-[28rem] rounded-xl flex items-center justify-center shadow-lg relative overflow-hidden group bg-green-800">
+                        <img src="{{ asset('rumah_quran.png') }}" onerror="this.onerror=null; this.src='https://placehold.co/400x600/166534/ffffff?text=RUMAH+QURAN'" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-500" alt="RUMAH QURAN">
+                    </div>
+                    <a href="{{ url('/register?jenjang=RQ') }}" class="w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded shadow text-center text-sm md:text-base transition">DAFTAR RUMAH QURAN &rarr;</a>
+                    <a href="#" class="w-full py-3 bg-gray-200 hover:bg-gray-300 text-gray-700 font-bold rounded shadow text-center text-sm transition">INFO PPDB RQ</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- STATS SECTION (Sisa halaman ke bawah sama seperti sebelumnya) -->
     <section class="bg-white py-12 fade-in-section">
         <!-- ... (Isi konten Program Unggulan/Stats yang lama biarkan di sini atau copy ulang dari file sebelumnya) ... -->
