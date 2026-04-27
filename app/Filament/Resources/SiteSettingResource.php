@@ -34,32 +34,28 @@ class SiteSettingResource extends Resource
                         ->live(onBlur: true), 
 
                     // 1. INPUT GAMBAR
-                    Forms\Components\FileUpload::make('value')
+                    Forms\Components\FileUpload::make('value_image')
                         ->label('Upload Gambar')
                         ->image()
                         ->directory('settings')
-                        // Pastikan FileUpload hanya muncul & aktif jika key sesuai
                         ->visible(fn (Forms\Get $get) => 
-                            str_contains($get('key'), 'image') || str_contains($get('key'), 'bg')
+                            str_contains($get('key') ?? '', 'image') || str_contains($get('key') ?? '', 'bg')
                         ),
 
-                    // 2. INPUT TANGGAL (DENGAN FIX ERROR ARRAY)
-                    Forms\Components\DateTimePicker::make('value')
+                    // 2. INPUT TANGGAL
+                    Forms\Components\DateTimePicker::make('value_date')
                         ->label('Waktu Berakhir (Deadline)')
                         ->seconds(false)
-                        ->visible(fn (Forms\Get $get) => $get('key') === 'spmb_deadline')
-                        // --- [FIX PENTING DISINI] ---
-                        // Jika state yang masuk berupa Array (karena konflik dgn FileUpload), ubah jadi null/string
-                        ->formatStateUsing(fn ($state) => is_array($state) ? null : $state), 
+                        ->visible(fn (Forms\Get $get) => ($get('key') ?? '') === 'spmb_deadline'),
 
                     // 3. INPUT TEKS BIASA
-                    Forms\Components\Textarea::make('value')
+                    Forms\Components\Textarea::make('value_text')
                         ->label('Isi Value')
                         ->rows(3)
-                        ->hidden(fn (Forms\Get $get) => 
-                            str_contains($get('key'), 'image') || 
-                            str_contains($get('key'), 'bg') || 
-                            $get('key') === 'spmb_deadline'
+                        ->visible(fn (Forms\Get $get) => 
+                            !str_contains($get('key') ?? '', 'image') && 
+                            !str_contains($get('key') ?? '', 'bg') && 
+                            ($get('key') ?? '') !== 'spmb_deadline'
                         ),
                 ])
             ]);
