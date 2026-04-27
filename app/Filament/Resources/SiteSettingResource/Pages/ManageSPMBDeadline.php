@@ -19,6 +19,8 @@ class ManageSPMBDeadline extends Page implements HasForms
 
     protected static string $resource = SiteSettingResource::class;
 
+    protected static string $view = 'filament.pages.manage-spmb-deadline';
+
     protected static ?string $title = 'Atur Deadline SPMB';
 
     protected static ?string $navigationIcon = 'heroicon-o-calendar-days';
