@@ -505,8 +505,8 @@
 
     <!-- Script Countdown AlpineJS -->
     <script>
-        document.addEventListener('alpine:init', () => {
-            Alpine.data('initCountdown', (expiryStr) => ({
+        function initCountdown(expiryStr) {
+            return {
                 days: '00',
                 hours: '00',
                 minutes: '00',
@@ -556,7 +556,7 @@
                         this.seconds = '00';
                     }
                 }
-            }));
-        });
+            }
+        }
     </script>
 @endsection
