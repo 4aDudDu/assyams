@@ -61,9 +61,12 @@ Route::get('/', function () {
     } catch (\Throwable $e) {
         // Pakai default
     }
+    
+    // Convert ke format ISO 8601 untuk JavaScript (YYYY-MM-DDTHH:mm:ss)
+    $deadlineISO = \Carbon\Carbon::parse($deadline)->format('Y-m-d\TH:i:s');
 
     // Kirim semua variabel ke view
-    return view('pages.home', compact('bgUrl', 'posts', 'deadline'));
+    return view('pages.home', compact('bgUrl', 'posts', 'deadline', 'deadlineISO'));
 });
 
 // 2. HALAMAN DETAIL BERITA (PUBLIC)

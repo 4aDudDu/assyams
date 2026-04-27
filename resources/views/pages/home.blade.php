@@ -81,7 +81,7 @@
         <!-- Timer Logic (AlpineJS) -->
         <!-- UPDATE DISINI: Menggunakan variabel $deadline dari Database -->
         <div class="md:w-1/2 w-full" 
-             x-data="countdown('{{ $deadline }}')" 
+             x-data="countdown('{{ $deadlineISO }}')" 
              x-init="init()">
             
             <h3 class="text-lg font-bold text-gray-900 mb-4 text-center md:text-left">SPMB Akan Berakhir Pada:</h3>
@@ -445,13 +445,29 @@
     <script>
         function countdown(expiry) {
             return {
-                expiry: new Date(expiry).getTime(),
+                expiry: expiry,
                 remaining: null,
                 days: '00',
                 hours: '00',
                 minutes: '00',
                 seconds: '00',
                 init() {
+                    // Parse tanggal dengan berbagai format
+                    let expiryTime = new Date(this.expiry).getTime();
+                    
+                    // Jika parsing gagal, coba format lain
+                    if (isNaN(expiryTime)) {
+                        // Coba format: YYYY-MM-DD HH:mm:ss
+                        expiryTime = new Date(this.expiry.replace(' ', 'T')).getTime();
+                    }
+                    
+                    // Jika masih gagal, gunakan end of year
+                    if (isNaN(expiryTime)) {
+                        const now = new Date();
+                        expiryTime = new Date(now.getFullYear(), 11, 31, 23, 59, 59).getTime();
+                    }
+                    
+                    this.expiry = expiryTime;
                     this.setRemaining();
                     setInterval(() => {
                         this.setRemaining();
@@ -464,6 +480,11 @@
                         this.hours = String(Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
                         this.minutes = String(Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
                         this.seconds = String(Math.floor((diff % (1000 * 60)) / 1000)).padStart(2, '0');
+                    } else {
+                        this.days = '00';
+                        this.hours = '00';
+                        this.minutes = '00';
+                        this.seconds = '00';
                     }
                 }
             }
