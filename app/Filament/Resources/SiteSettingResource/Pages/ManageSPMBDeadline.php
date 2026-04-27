@@ -6,17 +6,18 @@ use App\Filament\Resources\SiteSettingResource;
 use App\Models\SiteSetting;
 use Filament\Actions;
 use Filament\Forms;
+use Filament\Forms\Concerns\InteractsWithForms;
+use Filament\Forms\Contracts\HasForms;
 use Filament\Forms\Form;
-use Filament\Pages\Actions\Action;
+use Filament\Notifications\Notification;
 use Filament\Resources\Pages\Page;
-use Filament\Support\Enums\MaxWidth;
 use Carbon\Carbon;
 
-class ManageSPMBDeadline extends Page
+class ManageSPMBDeadline extends Page implements HasForms
 {
-    protected static string $resource = SiteSettingResource::class;
+    use InteractsWithForms;
 
-    protected static string $view = 'filament.resources.site-setting-resource.pages.manage-spmb-deadline';
+    protected static string $resource = SiteSettingResource::class;
 
     protected static ?string $title = 'Atur Deadline SPMB';
 
@@ -40,6 +41,8 @@ class ManageSPMBDeadline extends Page
         } else {
             $this->data['deadline'] = now()->endOfYear()->format('Y-m-d H:i');
         }
+        
+        $this->form->fill($this->data);
     }
 
     public function form(Form $form): Form
@@ -56,54 +59,57 @@ class ManageSPMBDeadline extends Page
                             ->seconds(false)
                             ->native(false),
 
-                    Forms\Components\TextInput::make('display')
-                        ->label('Tampilan Countdown')
-                        ->disabled()
-                        ->formatStateUsing(fn () => 
-                            Carbon::parse($this->data['deadline'] ?? now())->translatedFormat('d F Y, H:i') . ' WIB'
-                        )
-                        ->helperText('Ini adalah tampilan yang akan muncul di halaman depan (SPMB Akan Berakhir Pada)'),
+                        Forms\Components\TextInput::make('display')
+                            ->label('Tampilan Countdown')
+                            ->disabled()
+                            ->formatStateUsing(fn ($state, $record) => 
+                                Carbon::parse($this->data['deadline'] ?? now())->translatedFormat('d F Y, H:i') . ' WIB'
+                            )
+                            ->helperText('Ini adalah tampilan yang akan muncul di halaman depan (SPMB Akan Berakhir Pada)'),
 
-                    Forms\Components\Placeholder::make('info')
-                        ->label('Informasi Tambahan')
-                        ->content(fn () => view('filament.resources.site-setting-resource.pages.spmb-info', [
-                            'deadline' => Carbon::parse($this->data['deadline'] ?? now()),
-                        ])),
+                        Forms\Components\Placeholder::make('info')
+                            ->label('Informasi Tambahan')
+                            ->content(fn () => view('filament.resources.site-setting-resource.pages.spmb-info', [
+                                'deadline' => Carbon::parse($this->data['deadline'] ?? now()),
+                            ])),
                     ])
                     ->columns(1),
             ])
             ->statePath('data');
     }
 
+    protected function getFormActions(): array
+    {
+        return [
+            Actions\Action::make('save')
+                ->label('Simpan Pengaturan')
+                ->submit('save')
+                ->keyBindings(['mod+s']),
+        ];
+    }
+
     public function save(): void
     {
         $data = $this->form->getState();
 
-        // Simpan atau update setting
-        SiteSetting::updateOrCreate(
-            ['key' => 'spmb_deadline'],
-            ['value' => Carbon::createFromFormat('Y-m-d H:i', $data['deadline'])->format('Y-m-d H:i:s')]
-        );
+        try {
+            // Simpan atau update setting
+            SiteSetting::updateOrCreate(
+                ['key' => 'spmb_deadline'],
+                ['value' => Carbon::createFromFormat('Y-m-d H:i', $data['deadline'])->format('Y-m-d H:i:s')]
+            );
 
-        $this->dispatch('notify', [
-            'type' => 'success',
-            'title' => 'Berhasil',
-            'message' => 'Deadline SPMB telah diperbarui!',
-        ]);
-    }
-
-    protected function getFormActions(): array
-    {
-        return [
-            $this->getSaveFormAction(),
-        ];
-    }
-
-    protected function getSaveFormAction(): Action
-    {
-        return Action::make('save')
-            ->label('Simpan Pengaturan')
-            ->submit('save')
-            ->keyBindings(['mod+s']);
+            Notification::make()
+                ->success()
+                ->title('Berhasil')
+                ->body('Deadline SPMB telah diperbarui!')
+                ->send();
+        } catch (\Exception $e) {
+            Notification::make()
+                ->danger()
+                ->title('Error')
+                ->body('Gagal menyimpan deadline: ' . $e->getMessage())
+                ->send();
+        }
     }
 }

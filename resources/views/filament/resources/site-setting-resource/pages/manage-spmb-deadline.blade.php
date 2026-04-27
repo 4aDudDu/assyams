@@ -1,11 +1,11 @@
-@extends('filament::page')
-
-@section('content')
-    <div class="space-y-6">
+<x-filament::page>
+    <form wire:submit="save" class="space-y-6">
         {{ $this->form }}
 
         <div class="flex justify-end gap-2">
-            {{ $this->getSaveFormAction() }}
+            @foreach ($this->getFormActions() as $action)
+                {{ $action }}
+            @endforeach
         </div>
-    </div>
-@endsection
+    </form>
+</x-filament::page>
