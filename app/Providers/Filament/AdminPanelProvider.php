@@ -49,7 +49,7 @@ class AdminPanelProvider extends PanelProvider
 
             // Menu Dashboard
             ->pages([
-                Pages\Dashboard::class,
+                // Pages\Dashboard::class,
             ])
             
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
