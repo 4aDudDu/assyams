@@ -12,15 +12,13 @@ return new class extends Migration
             $table->id();
             $table->foreignId('class_group_id')->constrained('class_groups')->onDelete('cascade');
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
-            $table->enum('assessment_type', ['tahsin', 'tahfidz', 'tajwid']);
-            // data JSON menyimpan: surah, ayat, dan nilai L/C/TL plus nama santri
-            // Contoh: [{"surah": 1, "ayat": 1, "nilai": "L", "nama": "Abdullah", "nilai_penyetoran": 85}, {...}]
+            $table->enum('assessment_type', ['ziyadah', 'murojaah', 'tahsin', 'tilawah']);
+            // data JSON menyimpan: surah, ayat, dan nilai L/C/TL
+            // Contoh: [{"surah": 1, "ayat": 1, "nilai": "L"}, {...}]
             $table->json('data')->nullable();
-            $table->integer('month')->default(1); // Bulan 1-12
-            $table->integer('year')->default(2025); // Tahun
             $table->timestamps();
 
-            $table->index(['class_group_id', 'user_id', 'assessment_type', 'month', 'year']);
+            $table->unique(['class_group_id', 'user_id', 'assessment_type']);
         });
     }
 

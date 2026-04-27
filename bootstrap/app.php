@@ -22,7 +22,7 @@ $app = Application::configure(basePath: dirname(__DIR__))
 
 // 2. [PENTING] Tambahkan Baris Ini!
 // Ini memberitahu Laravel bahwa folder public ada di ../public_html
-// $app->usePublicPath(dirname(__DIR__) . '/../public_html');
+$app->usePublicPath(dirname(__DIR__) . '/../public_html');
 
 // 3. Return variabel $app
 return $app;

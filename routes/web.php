@@ -84,12 +84,6 @@ Route::middleware(['auth', 'verified', 'is_active'])->group(function () {
     Route::get('/transcript', [StudentController::class, 'transcript'])->name('student.transcript');
     Route::get('/attendance', [StudentController::class, 'attendance'])->name('student.attendance');
 
-    // Assessment Reports (untuk Ustad/Admin)
-    Route::get('/reports/monthly', [App\Http\Controllers\AssessmentReportController::class, 'monthlyReport'])->name('reports.monthly');
-    Route::get('/reports/monthly-pdf', [App\Http\Controllers\AssessmentReportController::class, 'exportMonthlyPDF'])->name('reports.monthly.pdf');
-    Route::get('/reports/semester', [App\Http\Controllers\AssessmentReportController::class, 'semesterReport'])->name('reports.semester');
-    Route::get('/reports/semester-pdf', [App\Http\Controllers\AssessmentReportController::class, 'exportSemesterPDF'])->name('reports.semester.pdf');
-
     // Payment Midtrans
     Route::get('/payment/checkout', [PaymentController::class, 'checkout'])->name('payment.checkout');
     Route::get('/payment/success', [PaymentController::class, 'success'])->name('payment.success');
