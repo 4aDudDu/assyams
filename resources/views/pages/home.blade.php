@@ -473,8 +473,8 @@
 
     <!-- Script Countdown AlpineJS -->
     <script>
-        function initCountdown(expiryStr) {
-            return {
+        document.addEventListener('alpine:init', () => {
+            Alpine.data('initCountdown', (expiryStr) => ({
                 days: '00',
                 hours: '00',
                 minutes: '00',
@@ -524,7 +524,7 @@
                         this.seconds = '00';
                     }
                 }
-            }
-        }
+            }));
+        });
     </script>
 @endsection
