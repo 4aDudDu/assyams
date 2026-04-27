@@ -12,26 +12,29 @@ class SiteSetting extends Model
     protected $fillable = [
         'key',
         'value',
+        'value_image',
+        'value_date',
+        'value_text',
     ];
 
     public function getValueImageAttribute() { 
         return $this->value; 
     }
     public function setValueImageAttribute($val) { 
-        if ($val !== null) $this->attributes['value'] = $val; 
+        $this->attributes['value'] = $val; 
     }
 
     public function getValueDateAttribute() { 
         return $this->value; 
     }
     public function setValueDateAttribute($val) { 
-        if ($val !== null) $this->attributes['value'] = $val; 
+        $this->attributes['value'] = $val; 
     }
 
     public function getValueTextAttribute() { 
         return $this->value; 
     }
     public function setValueTextAttribute($val) { 
-        if ($val !== null) $this->attributes['value'] = $val; 
+        $this->attributes['value'] = $val; 
     }
 }
