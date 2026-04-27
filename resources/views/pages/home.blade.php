@@ -145,7 +145,7 @@
                         <img src="{{ asset('rumah_quran.png') }}" onerror="this.onerror=null; this.src='https://placehold.co/400x600/166534/ffffff?text=RUMAH+QURAN'" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-500" alt="RUMAH QURAN">
                     </div>
                     <a href="{{ url('/register?jenjang=RQ') }}" class="w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded shadow text-center text-sm md:text-base transition">DAFTAR RUMAH QURAN &rarr;</a>
-                    <a href="#" class="w-full py-3 bg-gray-200 hover:bg-gray-300 text-gray-700 font-bold rounded shadow text-center text-sm transition">INFO PPDB RQ</a>
+                    <a href="#" class="w-full py-3 bg-gray-200 hover:bg-gray-300 text-gray-700 font-bold rounded shadow text-center text-sm transition">INFO PPDB YPTQ</a>
                 </div>
             </div>
         </div>
@@ -216,7 +216,7 @@
             <!-- Header Section -->
             <div class="text-center mb-12">
                 <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">
-                    Kelas di <span class="text-green-600">RQ Asy-Syams</span>
+                    Kelas di <span class="text-green-600">YPTQ Asy-Syams</span>
                 </h2>
                 <p class="mt-4 text-gray-500">Pilihan program pembelajaran Al-Qur'an sesuai kebutuhan Anda.</p>
                 <div class="mt-4 w-24 h-1 bg-yellow-400 mx-auto rounded-full"></div>
@@ -287,7 +287,7 @@
                         
                         <!-- Image Thumb -->
                         <div class="relative h-48 overflow-hidden">
-                            <img src="{{ asset('storage/' . $post->image) }}" alt="{{ $post->title }}" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500">
+                            <img src="{{ asset('storage/' . str_replace('\\', '/', $post->image)) }}" onerror="this.onerror=null; this.src='https://placehold.co/600x400/059669/white?text=Gambar+Berita'" alt="{{ $post->title }}" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500">
                             <!-- Category Badge -->
                             <div class="absolute top-4 left-4">
                                 <span class="bg-emerald-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">

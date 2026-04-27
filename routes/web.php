@@ -28,7 +28,7 @@ Route::get('/', function () {
     } catch (\Throwable $e) { 
         // Biarkan null
     }
-    $bgUrl = $heroBg ? asset('storage/' . $heroBg) : null;
+    $bgUrl = $heroBg ? asset('storage/' . str_replace('\\', '/', $heroBg)) : null;
     
     
     // B. AMBIL BERITA TERBARU (Fix Error Foreach)

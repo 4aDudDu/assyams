@@ -8,7 +8,7 @@
         $footerBg = null;
     }
 
-    $bgUrl = $footerBg ? asset('storage/' . $footerBg) : 'https://img.freepik.com/free-photo/aerial-view-large-building-with-green-grass_1127-3367.jpg'; // Gambar default jika belum upload
+    $bgUrl = $footerBg ? asset('storage/' . str_replace('\\', '/', $footerBg)) : 'https://img.freepik.com/free-photo/aerial-view-large-building-with-green-grass_1127-3367.jpg'; // Gambar default jika belum upload
 @endphp
 
 <!-- BAGIAN CTA (Call To Action) -->
