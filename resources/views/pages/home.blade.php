@@ -257,7 +257,7 @@
                         
                         <!-- Image Thumb -->
                         <div class="relative h-48 overflow-hidden">
-                            <img src="{{ asset($post->image) }}" onerror="this.onerror=null; this.src='https://placehold.co/600x400/059669/white?text=Gambar+Berita'" alt="{{ $post->title }}" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500">
+                            <img src="{{ asset('storage/' . $post->image) }}" alt="{{ $post->title }}" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-500">
                             <!-- Category Badge -->
                             <div class="absolute top-4 left-4">
                                 <span class="bg-emerald-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">
