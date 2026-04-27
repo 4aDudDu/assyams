@@ -120,68 +120,6 @@
             </div>
         </div>
     </div>
-    
-    <!-- KARTU JENJANG SECTION -->
-    <section class="py-12 bg-gray-50 fade-in-section" id="jenjang">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-10">
-                <h2 class="text-3xl font-extrabold text-emerald-800">Daftar Pilihan Jenjang Pendidikan</h2>
-                <div class="mt-4 w-24 h-1 bg-yellow-400 mx-auto rounded-full"></div>
-            </div>
-
-            <div class="grid grid-cols-2 md:grid-cols-5 gap-6">
-                <!-- TKIT -->
-                <div class="flex flex-col gap-3">
-                    <div class="bg-purple-600 h-64 rounded-xl flex flex-col items-center justify-center text-white font-bold shadow-lg relative overflow-hidden group p-4 text-center">
-                        <p class="text-xs uppercase font-semibold mb-4 tracking-wider opacity-80 mt-2">TAHUN PELAJARAN 2026/2027</p>
-                        <span class="text-5xl md:text-6xl drop-shadow-lg font-black tracking-tighter w-full">TKIT</span>
-                    </div>
-                    <a href="{{ url('/register?jenjang=TKIT') }}" class="w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded shadow text-center text-sm md:text-base transition">DAFTAR TKIT &rarr;</a>
-                    <a href="#" class="w-full py-3 bg-gray-200 hover:bg-gray-300 text-gray-700 font-bold rounded shadow text-center text-sm transition">INFO PPDB TKIT</a>
-                </div>
-
-                <!-- SDIT -->
-                <div class="flex flex-col gap-3">
-                    <div class="bg-red-800 h-64 rounded-xl flex flex-col items-center justify-center text-white font-bold shadow-lg relative overflow-hidden group p-4 text-center">
-                        <p class="text-xs uppercase font-semibold mb-4 tracking-wider opacity-80 mt-2">TAHUN PELAJARAN 2026/2027</p>
-                        <span class="text-5xl md:text-6xl drop-shadow-lg font-black tracking-tighter w-full">SDIT</span>
-                    </div>
-                    <a href="{{ url('/register?jenjang=SDIT') }}" class="w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded shadow text-center text-sm md:text-base transition">DAFTAR SDIT &rarr;</a>
-                    <a href="#" class="w-full py-3 bg-gray-200 hover:bg-gray-300 text-gray-700 font-bold rounded shadow text-center text-sm transition">INFO PPDB SDIT</a>
-                </div>
-
-                <!-- MTS -->
-                <div class="flex flex-col gap-3">
-                    <div class="bg-green-800 h-64 rounded-xl flex flex-col items-center justify-center text-white font-bold shadow-lg relative overflow-hidden group p-4 text-center">
-                        <p class="text-xs uppercase font-semibold mb-4 tracking-wider opacity-80 mt-2">TAHUN PELAJARAN 2026/2027</p>
-                        <span class="text-5xl md:text-6xl drop-shadow-lg font-black tracking-tighter w-full">MTS</span>
-                    </div>
-                    <a href="{{ url('/register?jenjang=MTS') }}" class="w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded shadow text-center text-sm md:text-base transition">DAFTAR MTS &rarr;</a>
-                    <a href="#" class="w-full py-3 bg-gray-200 hover:bg-gray-300 text-gray-700 font-bold rounded shadow text-center text-sm transition">INFO PPDB MTS</a>
-                </div>
-
-                <!-- SMPIT -->
-                <div class="flex flex-col gap-3">
-                    <div class="bg-yellow-500 h-64 rounded-xl flex flex-col items-center justify-center text-white font-bold shadow-lg relative overflow-hidden group p-4 text-center">
-                        <p class="text-xs uppercase font-semibold mb-4 tracking-wider opacity-80 mt-2">TAHUN PELAJARAN 2026/2027</p>
-                        <span class="text-4xl md:text-5xl drop-shadow-lg font-black tracking-tighter w-full">SMPIT</span>
-                    </div>
-                    <a href="{{ url('/register?jenjang=SMPIT') }}" class="w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded shadow text-center text-sm md:text-base transition">DAFTAR SMPIT &rarr;</a>
-                    <a href="#" class="w-full py-3 bg-gray-200 hover:bg-gray-300 text-gray-700 font-bold rounded shadow text-center text-sm transition">INFO PPDB SMPIT</a>
-                </div>
-
-                <!-- SMAIT -->
-                <div class="flex flex-col gap-3">
-                    <div class="bg-blue-800 h-64 rounded-xl flex flex-col items-center justify-center text-white font-bold shadow-lg relative overflow-hidden group p-4 text-center">
-                        <p class="text-xs uppercase font-semibold mb-4 tracking-wider opacity-80 mt-2">TAHUN PELAJARAN 2026/2027</p>
-                        <span class="text-4xl md:text-5xl drop-shadow-lg font-black tracking-tighter w-full">SMAIT</span>
-                    </div>
-                    <a href="{{ url('/register?jenjang=SMAIT') }}" class="w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded shadow text-center text-sm md:text-base transition">DAFTAR SMAIT &rarr;</a>
-                    <a href="#" class="w-full py-3 bg-gray-200 hover:bg-gray-300 text-gray-700 font-bold rounded shadow text-center text-sm transition">INFO PPDB SMAIT</a>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- STATS SECTION (Sisa halaman ke bawah sama seperti sebelumnya) -->
     <section class="bg-white py-12 fade-in-section">
