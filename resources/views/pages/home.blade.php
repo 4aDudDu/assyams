@@ -81,8 +81,8 @@
         <!-- Timer Logic (AlpineJS) -->
         <!-- UPDATE DISINI: Menggunakan variabel $deadline dari Database -->
         <div class="md:w-1/2 w-full" 
-             x-data="countdown('{{ $deadlineISO }}')" 
-             x-init="init()">
+             x-data="initCountdown('{{ $deadlineISO }}')" 
+             x-init="startCountdown()">
             
             <h3 class="text-lg font-bold text-gray-900 mb-4 text-center md:text-left">SPMB Akan Berakhir Pada:</h3>
             <!-- Tampilkan Tanggal Manusiawi -->
@@ -443,39 +443,46 @@
 
     <!-- Script Countdown AlpineJS -->
     <script>
-        function countdown(expiry) {
+        function initCountdown(expiryStr) {
             return {
-                expiry: expiry,
-                remaining: null,
                 days: '00',
                 hours: '00',
                 minutes: '00',
                 seconds: '00',
-                init() {
-                    // Parse tanggal dengan berbagai format
-                    let expiryTime = new Date(this.expiry).getTime();
-                    
-                    // Jika parsing gagal, coba format lain
-                    if (isNaN(expiryTime)) {
-                        // Coba format: YYYY-MM-DD HH:mm:ss
-                        expiryTime = new Date(this.expiry.replace(' ', 'T')).getTime();
+                expiryTime: 0,
+                
+                startCountdown() {
+                    // Parse tanggal deadline
+                    try {
+                        // Coba format ISO: YYYY-MM-DDTHH:mm:ss
+                        this.expiryTime = new Date(expiryStr).getTime();
+                        
+                        // Jika gagal, coba format lain
+                        if (isNaN(this.expiryTime)) {
+                            this.expiryTime = new Date(expiryStr.replace(' ', 'T')).getTime();
+                        }
+                        
+                        // Log untuk debug
+                        console.log('Deadline: ' + expiryStr);
+                        console.log('Parsed time: ' + this.expiryTime);
+                    } catch (e) {
+                        console.error('Error parsing date:', e);
                     }
                     
-                    // Jika masih gagal, gunakan end of year
-                    if (isNaN(expiryTime)) {
-                        const now = new Date();
-                        expiryTime = new Date(now.getFullYear(), 11, 31, 23, 59, 59).getTime();
-                    }
+                    // Update countdown immediately
+                    this.updateCountdown();
                     
-                    this.expiry = expiryTime;
-                    this.setRemaining();
+                    // Update setiap 1 detik
                     setInterval(() => {
-                        this.setRemaining();
+                        this.updateCountdown();
                     }, 1000);
                 },
-                setRemaining() {
-                    const diff = this.expiry - new Date().getTime();
-                    if (diff >= 0) {
+                
+                updateCountdown() {
+                    const now = new Date().getTime();
+                    const diff = this.expiryTime - now;
+                    
+                    if (diff > 0) {
                         this.days = String(Math.floor(diff / (1000 * 60 * 60 * 24))).padStart(2, '0');
                         this.hours = String(Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
                         this.minutes = String(Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
