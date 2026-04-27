@@ -112,6 +112,17 @@ Route::get('/rapor-pdf/{class_group}/{user}', function(App\Models\ClassGroup $cl
     return $pdf->stream('Rapor-' . Str::slug($user->name) . '.pdf');
 })->name('rapor.pdf');
 
+// Route Cetak Rekap Bulanan Penilaian (Assessment)
+Route::get('/assessment-pdf/{assessment}', function(App\Models\Assessment $assessment) {
+    if (!auth()->check()) {
+        abort(403);
+    }
+    $pdf = \Barryvdh\DomPDF\Facade\Pdf::loadView('filament.report.assessment-pdf', [
+        'assessment' => $assessment,
+    ]);
+    return $pdf->stream('Rekap-Bulanan-' . Str::slug($assessment->student->name ?? 'Santri') . '.pdf');
+})->name('assessment.pdf');
+
 // ===== TEMPORARY: CHECK DATABASE (HAPUS SETELAH DIGUNAKAN) =====
 Route::get('/check-db', function () {
     try {

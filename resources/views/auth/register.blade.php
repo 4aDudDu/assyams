@@ -55,10 +55,15 @@
             <div>
                 <x-input-label for="grade_level" :value="__('Daftar Untuk Jenjang')" />
                 <select id="grade_level" name="grade_level" class="block mt-1 w-full border-gray-300 focus:border-green-500 focus:ring-green-500 rounded-md shadow-sm">
-                    <option value="" disabled selected>Pilih Jenjang</option>
-                    <option value="SDIT">SDIT (Sekolah Dasar)</option>
-                    <option value="SMPIT">SMPIT (Menengah Pertama)</option>
-                    <option value="SMAIT">SMAIT (Menengah Atas)</option>
+                    @php
+                        $selectedJenjang = request()->query('jenjang', old('grade_level'));
+                    @endphp
+                    <option value="" disabled {{ !$selectedJenjang ? 'selected' : '' }}>Pilih Jenjang</option>
+                    <option value="TKIT" {{ $selectedJenjang == 'TKIT' ? 'selected' : '' }}>TKIT (Taman Kanak-kanak)</option>
+                    <option value="SDIT" {{ $selectedJenjang == 'SDIT' ? 'selected' : '' }}>SDIT (Sekolah Dasar)</option>
+                    <option value="MTS" {{ $selectedJenjang == 'MTS' ? 'selected' : '' }}>MTS (Madrasah Tsanawiyah)</option>
+                    <option value="SMPIT" {{ $selectedJenjang == 'SMPIT' ? 'selected' : '' }}>SMPIT (Menengah Pertama)</option>
+                    <option value="SMAIT" {{ $selectedJenjang == 'SMAIT' ? 'selected' : '' }}>SMAIT (Menengah Atas)</option>
                 </select>
                 <x-input-error :messages="$errors->get('grade_level')" class="mt-2" />
             </div>

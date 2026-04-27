@@ -35,10 +35,19 @@ class AdminPanelProvider extends PanelProvider
             // 1. GANTI NAMA APLIKASI
             ->brandName('Admin As-Syams')
 
-            // 2. GANTI WARNA TEMA (HIJAU)
+            // 2. GANTI WARNA TEMA UTAMA (Oranye Bata)
             ->colors([
-                'primary' => Color::Green, 
+                'primary' => '#c2410c', // Oranye bata
             ])
+            // Tambahkan Inject CSS Custom untuk Background Sesuai Hijau Logo
+            ->renderHook(
+                \Filament\View\PanelsRenderHook::HEAD_END,
+                fn (): string => '<style>
+                    body.fi-body, main.fi-main { background-color: #f0fdf4 !important; }
+                    aside.fi-sidebar { background-color: #ffffff !important; border-right: 2px solid #22c55e; }
+                    .fi-topbar { background-color: #ffffff !important; border-bottom: 2px solid #22c55e; }
+                </style>'
+            )
 
             ->favicon(asset('images/logo.png')) 
             // 3. MATIKAN DARK MODE

@@ -184,11 +184,10 @@ class AssessmentResource extends Resource
                     ->label('Jenis Penilaian')
                     ->badge()
                     ->color(fn (string $state): string => match ($state) {
-                        'ziyadah' => 'success',
-                        'murojaah' => 'info',
-                        'tahsin' => 'warning',
-                        'tilawah' => 'danger',
-                        default => 'gray',
+                        'tahsin'  => 'warning',
+                        'tahfidz' => 'success',
+                        'tajwid'  => 'info',
+                        default   => 'gray',
                     }),
 
                 Tables\Columns\TextColumn::make('created_at')
@@ -199,13 +198,18 @@ class AssessmentResource extends Resource
             ->filters([
                 Tables\Filters\SelectFilter::make('assessment_type')
                     ->options([
-                        'ziyadah' => 'Ziyadah',
-                        'murojaah' => 'Murojaah',
-                        'tahsin' => 'Tahsin',
-                        'tilawah' => 'Tilawah',
+                        'tahsin'  => 'Tahsin',
+                        'tahfidz' => 'Tahfidz',
+                        'tajwid'  => 'Tajwid',
                     ]),
             ])
             ->actions([
+                Tables\Actions\Action::make('cetak_rekap')
+                    ->label('Cetak PDF')
+                    ->icon('heroicon-o-printer')
+                    ->color('success')
+                    ->url(fn ($record) => route('assessment.pdf', $record))
+                    ->openUrlInNewTab(),
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make(),
             ])
