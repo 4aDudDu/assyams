@@ -13,6 +13,12 @@ class ListSiteSettings extends ListRecords
     protected function getHeaderActions(): array
     {
         return [
+            Actions\Action::make('manage-spmb')
+                ->label('⏱️ Atur Deadline SPMB')
+                ->icon('heroicon-o-calendar-days')
+                ->url(static::getResource()::getUrl('manage-spmb'))
+                ->button()
+                ->color('success'),
             Actions\CreateAction::make(),
         ];
     }

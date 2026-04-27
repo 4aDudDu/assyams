@@ -119,6 +119,7 @@ class SiteSettingResource extends Resource
             'index' => Pages\ListSiteSettings::route('/'),
             'create' => Pages\CreateSiteSetting::route('/create'),
             'edit' => Pages\EditSiteSetting::route('/{record}/edit'),
+            'manage-spmb' => Pages\ManageSPMBDeadline::route('/spmb-deadline'),
         ];
     }
 }
