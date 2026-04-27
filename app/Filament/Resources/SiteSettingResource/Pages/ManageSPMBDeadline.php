@@ -50,11 +50,11 @@ class ManageSPMBDeadline extends Page
                     ->description('Atur kapan pendaftaran SPMB akan berakhir. Countdown akan ditampilkan di halaman depan.')
                     ->schema([
                         Forms\Components\DateTimePicker::make('deadline')
-                        ->label('Waktu Berakhir Pendaftaran SPMB')
-                        ->description('Pilih tanggal dan jam kapan SPMB akan ditutup')
-                        ->required()
-                        ->seconds(false)
-                        ->native(false),
+                            ->label('Waktu Berakhir Pendaftaran SPMB')
+                            ->helperText('Pilih tanggal dan jam kapan SPMB akan ditutup')
+                            ->required()
+                            ->seconds(false)
+                            ->native(false),
 
                     Forms\Components\TextInput::make('display')
                         ->label('Tampilan Countdown')
