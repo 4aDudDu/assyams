@@ -28,7 +28,7 @@ Route::get('/', function () {
     } catch (\Throwable $e) { 
         // Biarkan null
     }
-    $bgUrl = $heroBg ? asset('storage/' . str_replace('\\', '/', $heroBg)) : null;
+    $bgUrl = $heroBg ? asset('storage/' . $heroBg) : null;
     
     
     // B. AMBIL BERITA TERBARU (Fix Error Foreach)
@@ -158,16 +158,6 @@ Route::get('/clear-cache-sekarang', function () {
 Route::get('/cek-rute', function () {
     Artisan::call('route:list', ['--path' => 'admin']);
     return '<pre>' . Artisan::output() . '</pre>';
-});
-
-// Rute untuk mengeksekusi storage:link di cPanel tanpa SSH
-Route::get('/buatstorage', function () {
-    try {
-        Artisan::call('storage:link');
-        return '<h1>Sukses!</h1><p>Storage link berhasil dibuat. Sekarang folder storage/app/public sudah terhubung ke public_html/storage/.</p>';
-    } catch (\Exception $e) {
-        return '<h1>Gagal!</h1><p>' . $e->getMessage() . '</p>';
-    }
 });
 Route::get('/cek-pintu', function () {
     try {
