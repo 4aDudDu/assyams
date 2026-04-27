@@ -46,11 +46,10 @@ class ManageSPMBDeadline extends Page
     {
         return $form
             ->schema([
-                Forms\Components\Card::make()->schema([
-                    Forms\Components\Heading::make('Pengaturan Waktu Countdown SPMB')
-                        ->description('Atur kapan pendaftaran SPMB akan berakhir. Countdown akan ditampilkan di halaman depan.'),
-
-                    Forms\Components\DateTimePicker::make('deadline')
+                Forms\Components\Section::make('Pengaturan Waktu Countdown SPMB')
+                    ->description('Atur kapan pendaftaran SPMB akan berakhir. Countdown akan ditampilkan di halaman depan.')
+                    ->schema([
+                        Forms\Components\DateTimePicker::make('deadline')
                         ->label('Waktu Berakhir Pendaftaran SPMB')
                         ->description('Pilih tanggal dan jam kapan SPMB akan ditutup')
                         ->required()
@@ -70,7 +69,7 @@ class ManageSPMBDeadline extends Page
                         ->content(fn () => view('filament.resources.site-setting-resource.pages.spmb-info', [
                             'deadline' => Carbon::parse($this->data['deadline'] ?? now()),
                         ])),
-                ])
+                    ])
                     ->columns(1),
             ])
             ->statePath('data');
